@@ -45,11 +45,6 @@ public class NavigationActivity extends BaseActivity
         transaction.commit();
     }
 
-    // Задание 3: Фрагменты и бэкстек
-    // Бизнес-задача: приложение-опросник с последовательными шагами.
-    // Пользователь проходит шаги: Вопрос 1 -> Вопрос 2 -> Результат.
-    // Кнопка "Назад" возвращает на предыдущий шаг.
-
     private void loadFragmentWithBackStack(Fragment fragment, String tag) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -58,11 +53,6 @@ public class NavigationActivity extends BaseActivity
         transaction.commit();
     }
 
-    // Задание 2:
-    // Бизнес-задача: приложение с логаутом.
-    // После выхода из аккаунта пользователь не должен возвращаться
-    // на предыдущий экран при нажатии "Назад".
-
     private void logoutAndStartNewActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -70,7 +60,6 @@ public class NavigationActivity extends BaseActivity
         finish();
     }
 
-    // Задание 3: Метод для открытия фрагментов с добавлением в бэкстек
     public void openFragmentWithBackStack(String fragmentType) {
         Fragment fragment;
 
@@ -90,13 +79,17 @@ public class NavigationActivity extends BaseActivity
         showToast("Opened Fragment " + fragmentType + " (added to back stack)");
     }
 
-    // Задание 2: Открытие новой Activity с флагами очистки стека
     public void openNewActivityWithClearFlag() {
         showToast("Logging out... Clearing activity stack");
         logoutAndStartNewActivity();
     }
 
-    // Реализация коллбэков из CallbackFragment (Задание 1)
+
+    public void onLogoutClick(View view) {
+        openNewActivityWithClearFlag();
+    }
+
+    // Реализация коллбэков
     @Override
     public void onButton1Clicked() {
         showToast("Button 1 clicked - Opening Fragment A via callback");
@@ -114,7 +107,4 @@ public class NavigationActivity extends BaseActivity
         showToast("Button 3 clicked - Opening Fragment C via callback");
         openFragmentWithBackStack("C");
     }
-}
-public void onLogoutClick(View view) {
-    openNewActivityWithClearFlag();
 }
