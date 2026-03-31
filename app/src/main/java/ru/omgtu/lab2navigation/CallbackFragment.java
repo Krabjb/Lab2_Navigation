@@ -13,7 +13,6 @@ public class CallbackFragment extends BaseFragment {
 
     private CallbackListener callbackListener;
 
-    // Интерфейс для коммуникации с Activity
     public interface CallbackListener {
         void onButton1Clicked();
         void onButton2Clicked();
