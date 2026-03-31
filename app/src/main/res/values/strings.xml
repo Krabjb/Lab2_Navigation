@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">NavigationLab</string>
+    <string name="btn_back">Back</string>
+    <string name="btn_logout">Logout</string>
+</resources>
